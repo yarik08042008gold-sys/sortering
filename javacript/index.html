@@ -1,0 +1,235 @@
+Javascript 1, oppg 1 - 7
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 1</title>
+    <style>
+        body { background: beige; padding: 20px; color: darkblue; }
+        h1, h2 { font-family: monospace; color: darkgreen; align-items: center; }
+    </style>
+</head>
+<body>
+ 
+    <h1>Oppgave 1</h1>
+    <script>
+        const navn = "Yaroslav";
+        console.log (navn);
+        navn = "Trym"; // Feilmelding i console
+    </script>
+    <p>Se console -></p>
+ 
+    <h1>Oppgave 2</h1>
+    <script>
+        let resultat = 0;
+        console.log (resultat);
+        resultat++;
+        console.log (resultat);
+    </script>
+    <p>Se console -></p>
+   
+    <h1>Oppgave 3</h1>
+    <script>
+        //navn fra oppg 1
+        const alder = 18;
+        const elev = false;
+        let tom;
+        console.log(typeof(navn));
+        console.log(typeof(alder));
+        console.log(typeof(elev));
+        console.log(typeof(tom));
+    </script>
+    <p>Se console -></p>
+ 
+    <h1>Oppgave 4</h1>
+    <h2 id="melding">Ingen melding enda</h2>
+    <script>
+        const melding = document.querySelector("#melding");
+        console.log (melding.innerHTML);
+    </script>
+    <p>Se console -></p>
+ 
+    <h1>Oppgave 5</h1>
+    <script>
+        melding.textContent = "JavaScript was here."
+        console.log (melding.textContent);
+    </script>
+    <p>Se over og i console -></p>
+ 
+    <h1>Oppgave 6</h1>
+    <script>
+        function visMelding() {
+            console.log("Knappen ble trykket!");
+            melding.textContent = "Du trykket på knappen!";
+        }
+    </script>
+    <button onclick="visMelding()">Trykk på meg</button>
+    <p>Se console </p>
+ 
+    <h1>Oppgave 7</h1>
+    <p>Se funksjon i oppgave 6 (melding.textContent)</p>
+
+
+        <h1>Oppgave 8</h1>
+
+    <script>
+        function siHei() {
+            const navn = document.querySelector("#navn").value;
+            document.querySelector("#svar").textContent = "Hei " + navn + "!";
+        }
+    </script>
+    <input id="navn">
+    <button onclick="siHei()">Si hei</button>
+    <p id="svar"></p>
+
+
+
+    <h1>Oppgave 9</h1>
+
+    <script>
+        function lagHilsen(navn) {
+            return "Hei " + navn + "!";
+        }
+
+        console.log(lagHilsen("Ola"));
+    </script>
+
+    <p>Se console </p>
+
+
+    <h1>Oppgave 10</h1>
+
+    <input id="navn10" placeholder="Navn">
+    <input id="alder10" placeholder="Alder">
+    <button onclick="visHilsen()">Lag hilsen</button>
+    <p id="svar10"></p>
+
+    <script>
+        function lagHilsen2(navn, alder) {
+            return "Hei " + navn + "! Du er " + alder + " år gammel.";
+        }
+
+        function visHilsen() {
+            const navn = document.querySelector("#navn10").value;
+            const alder = document.querySelector("#alder10").value;
+            document.querySelector("#svar10").textContent = lagHilsen2(navn, alder);
+        }
+    </script>
+
+
+    <h1>Oppgave 11</h1>
+
+    <button onclick="byttFarge()">Bytt farge</button>
+
+    <script>
+        function byttFarge() {
+            melding.style.backgroundColor = "yellow";
+            melding.style.color = "red";
+            melding.style.fontSize = "30px";
+        }
+    </script>
+
+    <p>Se melding over </p>
+
+
+    <h1>Oppgave 12</h1>
+
+    <button onclick="tellKlikk()">Klikk</button>
+    <p id="klikk">Du har trykket 0 ganger.</p>
+
+    <script>
+        let antallKlikk = 0;
+
+        function tellKlikk() {
+            antallKlikk++;
+            document.querySelector("#klikk").textContent =
+                "Du har trykket " + antallKlikk + " ganger.";
+        }
+    </script>
+
+
+    <h1>Oppgave 13</h1>
+
+    <script>
+        const elevObjekt = {
+            navn: "Jaroslav",
+            alder: 18,
+            klasse: "2ITA",
+            erElev: true
+        };
+
+        console.log(elevObjekt);
+        console.log(elevObjekt.navn);
+    </script>
+
+    <p>Se console </p>
+
+
+    <h1>Oppgave 14</h1>
+
+    <script>
+        elevObjekt.presenter = function() {
+            console.log("Jeg heter " + this.navn + " og går i " + this.klasse + ".");
+        }
+
+        elevObjekt.presenter();
+    </script>
+
+    <p>Se console </p>
+
+
+    <h1>Oppgave 15</h1>
+
+    <input id="elevNavn" placeholder="Navn">
+    <input id="elevAlder" placeholder="Alder">
+    <input id="elevKlasse" placeholder="Klasse">
+    <button onclick="opprettElev()">Opprett elev</button>
+
+    <p id="elevkort"></p>
+
+    <script>
+        function opprettElev() {
+            const elev = {
+                navn: document.querySelector("#elevNavn").value,
+                alder: document.querySelector("#elevAlder").value,
+                klasse: document.querySelector("#elevKlasse").value,
+
+                presenter: function() {
+                    return this.navn + " går i " + this.klasse +
+                    " og er " + this.alder + " år.";
+                }
+            };
+
+            const kort = document.querySelector("#elevkort");
+
+            kort.textContent =
+                "Navn: " + elev.navn +
+                " | Alder: " + elev.alder +
+                " | Klasse: " + elev.klasse +
+                " | " + elev.presenter();
+
+            kort.style.backgroundColor = "lightblue";
+            kort.style.padding = "15px";
+
+            console.log(elev);
+        }
+    </script>
+
+    <p>Se elevkort og console </p>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </body>
+    </html>
+    
